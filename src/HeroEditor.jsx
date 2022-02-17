@@ -1,23 +1,19 @@
-import { createSignal } from 'solid-js';
 
-export default function HeroEditor({ id, name: _name }) {
-    
-    const [name, setName] = createSignal(_name);
+export default function HeroEditor({ hero }) {
 
     return (
-        <div class="p-6 bg-gray-200 text-left">
+        <div class="p-3 text-left">
             <h2 class="text-xl my-2 font-bold">
-                {name().toUpperCase()} Details
+                {hero().name.toUpperCase()} Details
             </h2>
             <div class='flex gap-3 items-center'>
                 <strong class="font-semibold">Id:</strong>
-                <span>{id}</span>
+                <span>{hero().id}</span>
             </div>
             <div class="flex gap-3 items-center">
-                <label>Hero Name:</label>
-                <input class="rounded p-2" type="text" 
-                    value={name()} 
-                    onInput={e => setName(e.target.value)} />
+                <label class="font-semibold">Hero Name:</label>
+                <input class="rounded border border-gray-400 p-2" type="text" 
+                    value={hero().name} />
             </div>
         </div>
     );
