@@ -19,7 +19,8 @@ export default function Heroes({ heroes }) {
                 <For each={heroes}>
                 {hero => (
                     <li>
-                        <button class="p-2 border rounded border-gray-800 hover:bg-gray-300" 
+                        <button class="p-2 border rounded border-gray-800 hover:bg-gray-300"
+                            classList={{ 'bg-gray-300': (selectedHero() && hero.id === selectedHero().id) }}
                             onClick={e => onSelect(hero)}>
                             {hero.name}
                         </button>
@@ -28,7 +29,7 @@ export default function Heroes({ heroes }) {
                 </For>
             </ul>
             <Show when={selectedHero()}>
-                <HeroEditor hero={selectedHero} />
+                <HeroEditor hero={selectedHero} update={setSelectedHero} />
             </Show>
         </div>
     );

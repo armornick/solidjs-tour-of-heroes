@@ -1,5 +1,5 @@
 
-export default function HeroEditor({ hero }) {
+export default function HeroEditor({ hero, update }) {
 
     return (
         <div class="p-3 text-left">
@@ -13,7 +13,8 @@ export default function HeroEditor({ hero }) {
             <div class="flex gap-3 items-center">
                 <label class="font-semibold">Hero Name:</label>
                 <input class="rounded border border-gray-400 p-2" type="text" 
-                    value={hero().name} />
+                    value={hero().name} 
+                    onInput={e => update({ id: hero().id, name: e.target.value })} />
             </div>
         </div>
     );
