@@ -1,10 +1,9 @@
-import { createSignal } from 'solid-js';
-import { HEROES } from './mock-heroes.js';
+import HeroService from '../services/hero-service.js';
 import Heroes from './Heroes.jsx';
 
 export default function App() {
 
-    const heroes = HEROES;
+    const heroes = HeroService.getHeroes();
 
     return (
         <main class="container mx-auto text-center p-6">
