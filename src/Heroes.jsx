@@ -1,4 +1,4 @@
-import { For, Show, createSignal } from "solid-js";
+import { For, Show, createSignal, createMemo } from "solid-js";
 import HeroEditor from "./HeroEditor";
 
 export default function Heroes({ heroes }) {
@@ -36,14 +36,16 @@ export default function Heroes({ heroes }) {
 }
 
 function HeroItem({ hero, onSelect, selectedHero }) {
+
+    const selected = createMemo(() => selectedHero() && selectedHero().id === hero.id)
+
     return (
         <li class="w-full text-left rounded bg-gray-300 flex">
             <span class="py-2 px-4 rounded-l text-white bg-gray-500">
                 {hero.id}
             </span>
             <button class="px-6 py-2 text-left grow rounded-r hover:text-white hover:bg-gray-800"
-                classList={{ 'text-white': selectedHero() && selectedHero().id === hero.id, 
-                    'bg-gray-800': selectedHero() && selectedHero().id === hero.id }}
+                classList={{ 'text-white': selected(), 'bg-gray-800': selected() }}
                 onClick={e => onSelect(hero)}>
                 {hero.name}
             </button>
