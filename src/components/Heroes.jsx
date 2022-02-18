@@ -18,7 +18,7 @@ export default function Heroes({ heroes }) {
             <div class="flex gap-4">
                 <div class="w-1/2">
                     <ul class="flex flex-col gap-3">
-                        <For each={heroes}>
+                        <For each={heroes()}>
                             {hero => 
                                 <HeroItem hero={hero} onSelect={onSelect} selectedHero={selectedHero} />}
                         </For>

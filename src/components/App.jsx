@@ -1,9 +1,11 @@
+import { createSignal } from 'solid-js';
 import HeroService from '../services/hero-service.js';
 import Heroes from './Heroes.jsx';
 
 export default function App() {
 
-    const heroes = HeroService.getHeroes();
+    const [heroes, setHeroes] = createSignal([]);
+    HeroService.getHeroes().then(heroes => setHeroes(heroes));
 
     return (
         <main class="container mx-auto text-center p-6">

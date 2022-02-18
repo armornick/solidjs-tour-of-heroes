@@ -3,7 +3,7 @@ import { HEROES } from './mock-heroes.js';
 class HeroService {
 
     getHeroes() {
-        return HEROES;
+        return Promise.resolve(HEROES);
     }
 
 }
