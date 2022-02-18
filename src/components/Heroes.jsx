@@ -1,4 +1,5 @@
 import { For, Show, createSignal, createMemo } from "solid-js";
+import MessagesService from '../services/messages-service';
 import HeroEditor from "./HeroEditor";
 
 export default function Heroes({ heroes }) {
@@ -6,7 +7,8 @@ export default function Heroes({ heroes }) {
     const [selectedHero, setSelectedHero] = createSignal(null);
 
     const onSelect = (hero) => {
-        console.log(`set selected hero: ${JSON.stringify(hero)}`);
+        // console.log(`set selected hero: ${JSON.stringify(hero)}`);
+        MessagesService.show(`selecting hero ${hero.id}`);
         setSelectedHero(hero);
     };
 
