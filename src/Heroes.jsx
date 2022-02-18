@@ -15,23 +15,37 @@ export default function Heroes({ heroes }) {
             <h2 class="text-xl my-2 font-bold">
                 My Heroes
             </h2>
-            <ul class="flex flex-wrap gap-3">
-                <For each={heroes}>
-                {hero => (
-                    <li>
-                        <button class="p-2 border rounded border-gray-800 hover:bg-gray-300"
-                            classList={{ 'bg-gray-300': (selectedHero() && hero.id === selectedHero().id) }}
-                            onClick={e => onSelect(hero)}>
-                            {hero.name}
-                        </button>
-                    </li>
-                )}
-                </For>
-            </ul>
-            <Show when={selectedHero()}>
-                <HeroEditor hero={selectedHero} update={setSelectedHero} />
-            </Show>
+            <div class="flex gap-4">
+                <div class="w-1/2">
+                    <HeroList heroes={heroes} onSelect={onSelect} />
+                </div>
+                <div class="w-1/2">
+                    <Show when={selectedHero()}>
+                        <HeroEditor hero={selectedHero} update={setSelectedHero} />
+                    </Show>
+                </div>
+            </div>
         </div>
     );
 
+}
+
+function HeroList({ heroes, onSelect }) {
+    return (
+        <ul class="flex flex-col gap-3">
+            <For each={heroes}>
+            {hero => (
+                <li class="w-full text-left rounded bg-gray-300 flex">
+                    <span class="py-2 px-4 rounded-l text-white bg-gray-500">
+                        {hero.id}
+                    </span>
+                    <button class="px-6 py-2 text-left grow rounded-r hover:text-white hover:bg-gray-800"
+                        onClick={e => onSelect(hero)}>
+                        {hero.name}
+                    </button>
+                </li>
+            )}
+            </For>
+        </ul>
+    );
 }
