@@ -1,6 +1,5 @@
 import { For, Show, createSignal, createMemo } from "solid-js";
-import MessagesService from '../services/messages-service';
-import HeroEditor from "./HeroEditor";
+// import MessagesService from '../services/messages-service';
 
 export default function Heroes({ heroes }) {
     
@@ -8,7 +7,7 @@ export default function Heroes({ heroes }) {
 
     const onSelect = (hero) => {
         // console.log(`set selected hero: ${JSON.stringify(hero)}`);
-        MessagesService.show(`selecting hero ${hero.id}`);
+        // MessagesService.show(`selecting hero ${hero.id}`);
         setSelectedHero(hero);
     };
 
@@ -17,21 +16,12 @@ export default function Heroes({ heroes }) {
             <h2 class="title">
                 My Heroes
             </h2>
-            <div class="flex gap-4">
-                <div class="w-1/2">
-                    <ul class="flex flex-col gap-3">
-                        <For each={heroes()}>
-                            {hero => 
-                                <HeroItem hero={hero} onSelect={onSelect} selectedHero={selectedHero} />}
-                        </For>
-                    </ul>
-                </div>
-                <div class="w-1/2">
-                    <Show when={selectedHero()}>
-                        <HeroEditor hero={selectedHero} update={setSelectedHero} />
-                    </Show>
-                </div>
-            </div>
+            <ul class="flex flex-col gap-3">
+                <For each={heroes()}>
+                    {hero => 
+                        <HeroItem hero={hero} onSelect={onSelect} selectedHero={selectedHero} />}
+                </For>
+            </ul>
         </div>
     );
 

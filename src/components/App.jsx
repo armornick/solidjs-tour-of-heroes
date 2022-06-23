@@ -5,6 +5,7 @@ import HeroService from '../services/hero-service.js';
 const Home = lazy(() => import('./Home.jsx'));
 const Heroes = lazy(() => import('./Heroes.jsx'));
 const Dashboard = lazy(() => import('./Dashboard.jsx'));
+const HeroDetails = lazy(() => import('./HeroDetails.jsx'));
 
 export default function App() {
 
@@ -26,6 +27,7 @@ export default function App() {
                     <Route path='/' element={<Home />} />
                     <Route path='/heroes' element={<Heroes heroes={heroes} />} />
                     <Route path='/dashboard' element={<Dashboard heroes={heroes} />} />
+                    <Route path='/detail/:id' element={<HeroDetails />} />
                 </Routes>
             </main>
         </Router>
