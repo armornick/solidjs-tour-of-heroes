@@ -14,7 +14,7 @@ export default function Heroes({ heroes }) {
 
     return (
         <div class="p-4 border-y-2 border-gray-400 text-left">
-            <h2 class="text-xl mb-4 font-bold">
+            <h2 class="title">
                 My Heroes
             </h2>
             <div class="flex gap-4">

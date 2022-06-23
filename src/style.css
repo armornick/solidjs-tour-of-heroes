@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+
+    .title {
+        @apply text-xl my-4 font-bold;
+    }
+
+}

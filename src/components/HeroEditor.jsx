@@ -3,7 +3,7 @@ export default function HeroEditor({ hero, update }) {
 
     return (
         <div class="p-3 text-left">
-            <h2 class="text-xl my-2 font-bold">
+            <h2 class="title">
                 {hero().name.toUpperCase()} Details
             </h2>
             <div class='flex gap-3 items-center'>
